@@ -1,8 +1,11 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const cors = require('cors');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const keys = require('./config/keys');
+require('./models/Income');
+
+mongoose.connect(keys.mongoURI);
 
 const app = express();
 
