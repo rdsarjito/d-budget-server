@@ -24,6 +24,11 @@ module.exports = app => {
       .then(income => res.json(income));
   });
 
+  app.get('/api/expense', async (req, res) => {
+    Expense.find()
+      .then(expense => res.json(expense));
+  });
+
   app.delete('/api/income/:id', (req, res) => {
     Income.findByIdAndDelete(req.params.id)
       .then(() => res.json())
