@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const keys = require('./config/keys');
 require('./models/Income');
+require('./models/Expense');
 
 mongoose.connect(keys.mongoURI);
 
@@ -12,7 +13,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-require('./routes/incomeRoutes')(app);
+require('./routes/balanceRoutes')(app);
 
 const PORT = 5000;
 
