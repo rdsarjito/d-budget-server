@@ -9,5 +9,11 @@ module.exports = app => {
 
     const dataIncome = await newIncome.save();
     res.status(201).send(dataIncome)
-  })
-};
+  });
+
+  app.get('/api/income', async (req, res) => {
+    Income.find()
+      .then(income => res.json(income));
+  });
+
+}
