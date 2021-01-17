@@ -3,17 +3,20 @@ const Income = mongoose.model('incomes');
 const Expense = mongoose.model('expenses');
 
 module.exports = app => {
+  
   app.post('/api/income', async (req, res) => {
+    const date = new Date();
     const { description, amount } = req.body.data;
-    const newIncome = new Income ({ description, amount });
+    const newIncome = new Income ({ description, amount, date });
 
     const data = await newIncome.save();
-    res.status(201).send(data)
+    res.status(201).send(data);
   });
 
   app.post('/api/expense', async (req, res) => {
+    const date = new Date();
     const { description, amount } = req.body.data;
-    const newExpense = new Expense ({ description, amount });
+    const newExpense = new Expense ({ description, amount, date });
 
     const data = await newExpense.save();
     res.status(201).send(data)
@@ -31,6 +34,11 @@ module.exports = app => {
 
   app.delete('/api/income/:id', (req, res) => {
     Income.findByIdAndDelete(req.params.id)
+      .then(() => res.json())
+  });
+
+  app.delete('/api/expense/:id', (req, res) => {
+    Expense.findByIdAndDelete(req.params.id)
       .then(() => res.json())
   });
 };
