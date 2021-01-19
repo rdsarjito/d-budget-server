@@ -7,7 +7,8 @@ module.exports = app => {
   app.post('/api/income', async (req, res) => {
     const date = new Date();
     const { description, amount } = req.body.data;
-    const newIncome = new Income ({ description, amount, date });
+    const typeBalance = 'income';
+    const newIncome = new Income ({ description, amount, typeBalance, date });
 
     const data = await newIncome.save();
     res.status(201).send(data);
@@ -16,7 +17,8 @@ module.exports = app => {
   app.post('/api/expense', async (req, res) => {
     const date = new Date();
     const { description, amount } = req.body.data;
-    const newExpense = new Expense ({ description, amount, date });
+    const typeBalance = 'expense';
+    const newExpense = new Expense ({ description, amount, typeBalance, date });
 
     const data = await newExpense.save();
     res.status(201).send(data)

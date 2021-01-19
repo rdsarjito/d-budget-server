@@ -4,7 +4,8 @@ const { Schema } = mongoose;
 const expenseSchema = new Schema({
   description: String,
   amount: String,
-  date: String,
+  typeBalance: String,
+  date: Date,
 });
 
 mongoose.model('expenses', expenseSchema);
