@@ -13,6 +13,8 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
+app.use('/images', express.static('images'));
+
 require('./routes/balanceRoutes')(app);
 
 const PORT = 5000;
