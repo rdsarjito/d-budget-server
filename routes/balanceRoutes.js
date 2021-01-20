@@ -6,9 +6,9 @@ module.exports = app => {
   
   app.post('/api/income', async (req, res) => {
     const date = new Date();
-    const { description, amount } = req.body.data;
+    const { description, amount, category } = req.body.data;
     const typeBalance = 'income';
-    const newIncome = new Income ({ description, amount, typeBalance, date });
+    const newIncome = new Income ({ description, amount, category, typeBalance, date });
 
     const data = await newIncome.save();
     res.status(201).send(data);
@@ -16,9 +16,9 @@ module.exports = app => {
 
   app.post('/api/expense', async (req, res) => {
     const date = new Date();
-    const { description, amount } = req.body.data;
+    const { description, amount, category } = req.body.data;
     const typeBalance = 'expense';
-    const newExpense = new Expense ({ description, amount, typeBalance, date });
+    const newExpense = new Expense ({ description, amount, category, typeBalance, date });
 
     const data = await newExpense.save();
     res.status(201).send(data)
@@ -26,7 +26,7 @@ module.exports = app => {
 
   app.get('/api/income', async (req, res) => {
     Income.find()
-      .then(income => res.json(income));
+      .then(description => res.json(description));
   });
 
   app.get('/api/expense', async (req, res) => {
@@ -43,4 +43,6 @@ module.exports = app => {
     Expense.findByIdAndDelete(req.params.id)
       .then(() => res.json())
   });
+
+  app.get('/api/')
 };
