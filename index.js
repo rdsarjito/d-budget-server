@@ -5,6 +5,7 @@ const cors = require('cors');
 const keys = require('./config/keys');
 require('./models/Income');
 require('./models/Expense');
+require('./models/Category');
 
 mongoose.connect(keys.mongoURI);
 
