@@ -27,13 +27,8 @@ module.exports = app => {
       .then(category => res.json(category));
   });
 
-  app.delete('/api/income/:id', (req, res) => {
-    Income.findByIdAndDelete(req.params.id)
-      .then(() => res.json())
-  });
-
-  app.delete('/api/expense/:id', (req, res) => {
-    Expense.findByIdAndDelete(req.params.id)
+  app.delete('/api/transactions/:id', (req, res) => {
+    Transaction.findByIdAndDelete(req.params.id)
       .then(() => res.json())
   });
 
