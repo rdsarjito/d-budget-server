@@ -5,8 +5,8 @@ const expenseSchema = new Schema({
   description: String,
   amount: String,
   category: String,
-  typeBalance: String,
   date: Date,
+  typeBalance: String
 });
 
 mongoose.model('expenses', expenseSchema);
