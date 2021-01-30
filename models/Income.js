@@ -1,11 +1,12 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-const transactionSchema = new Schema({
+const incomeSchema = new Schema({
   description: String,
   amount: String,
-  type: String,
+  category: String,
   date: Date,
+  typeBalance: String
 });
 
-mongoose.model('transactions', transactionSchema);
+mongoose.model('incomes', incomeSchema);
