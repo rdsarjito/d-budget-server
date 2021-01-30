@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 const Income = mongoose.model('incomes');
 const Expense = mongoose.model('expenses');
 const Category = mongoose.model('category');
-const Transaction = mongoose.model('transactions');
 
 module.exports = app => {
 
@@ -51,13 +50,13 @@ module.exports = app => {
       .then(category => res.json(category));
   });
 
-  app.delete('/api/transactions/:id', (req, res) => {
-    Transaction.findByIdAndDelete(req.params.id)
+  app.delete('/api/income/:id', (req, res) => {
+    Income.findByIdAndDelete(req.params.id)
       .then(() => res.json())
   });
 
-  app.delete('/api/category/:id', (req, res) => {
-    Category.findByIdAndDelete(req.params.id)
+  app.delete('/api/expense/:id', (req, res) => {
+    Expense.findByIdAndDelete(req.params.id)
       .then(() => res.json())
   });
 

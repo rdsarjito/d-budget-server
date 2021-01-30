@@ -6,7 +6,6 @@ const keys = require('./config/keys');
 require('./models/Income');
 require('./models/Expense');
 require('./models/Category');
-require('./models/Transactions');
 
 mongoose.connect(keys.mongoURI);
 
