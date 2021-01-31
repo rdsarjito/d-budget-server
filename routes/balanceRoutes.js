@@ -27,9 +27,9 @@ module.exports = app => {
 
   app.post('/api/category', async (req, res) => {
     const date = new Date();
-    const { category, color } = req.body.data;
+    const { category, color, typeBalance } = req.body.data;
     const amount = 0;
-    const newCategory = new Category ({ category, amount, color, date });
+    const newCategory = new Category ({ category, amount, typeBalance, color, date });
 
     const data = await newCategory.save();
     res.status(201).send(data)
