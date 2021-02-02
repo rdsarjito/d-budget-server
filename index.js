@@ -6,6 +6,7 @@ const keys = require('./config/keys');
 require('./models/Income');
 require('./models/Expense');
 require('./models/Category');
+require('./models/User');
 
 mongoose.connect(keys.mongoURI);
 
@@ -16,6 +17,7 @@ app.use(cors());
 
 app.use('/images', express.static('images'));
 
+require('./routes/authRoutes')(app);
 require('./routes/balanceRoutes')(app);
 
 const PORT = 5000;

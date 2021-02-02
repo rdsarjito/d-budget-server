@@ -1,3 +1,8 @@
+const dotenv = require('dotenv').config({ path: './.env' }).parsed;
+
 module.exports = {
-  mongoURI: 'mongodb+srv://dbBudget:QPViouWqZfQyDuOv@budget.8gb4y.mongodb.net/balance?retryWrites=true&w=majority',
-}
+  mongoURI: dotenv.MONGO_URI,
+  googleClientID: dotenv.GOOGLE_CLIENT_ID,
+  googleClientSecret: dotenv.GOOGLE_CLIENT_SECRET,
+  accesTokenSecret: dotenv.ACCES_TOKEN_SECRET
+};
