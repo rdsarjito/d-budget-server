@@ -13,6 +13,7 @@ require('./models/User');
 
 const incomeRoutes = require('./routes/income');
 const expenseRoutes = require('./routes/expense');
+const categoryRouters = require('./routes/category');
 
 const app = express();
 
@@ -21,9 +22,10 @@ app.use(cors());
 
 app.use('/income', incomeRoutes);
 app.use('/expense', expenseRoutes);
+app.use('/category', categoryRouters);
 
 require('./routes/authRoutes')(app);
-require('./routes/balanceRoutes')(app);
+// require('./routes/balanceRoutes')(app);
 
 const PORT = 5000;
 

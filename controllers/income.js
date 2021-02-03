@@ -7,19 +7,28 @@ const createIncome = async(req, res) => {
   const typeBalance = 'income';
   const newIncome = new Income ({ description, amount, category, date, typeBalance });
 
-  const data = await newIncome.save();
+  const income = await newIncome.save();
 
   try {
-    res.status(201).send(data);
+    res.status(201).send(income);
   } catch (error) {
     console.log(error);
   };
 };
 
-const getIncome = async (req, res) => {
-  Income.find()
-    .then(description => res.json(description));
+const getIncome = async(req, res) => {
+  const income = await Income.find()
+  res.send(income);
+};
+
+const deleteIncome = async(req, res) => {
+  const id = req.params.id;
+  const income = await Income.findByIdAndDelete(id);
+  res.send(income)
+}
 
 module.exports = {
-  createIncome
+  createIncome,
+  getIncome,
+  deleteIncome
 };

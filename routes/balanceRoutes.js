@@ -24,43 +24,43 @@ module.exports = app => {
   //   res.status(201).send(data)
   // });
 
-  app.post('/api/category', async (req, res) => {
-    const date = new Date();
-    const { category, color, typeBalance } = req.body.data;
-    const amount = 0;
-    const newCategory = new Category ({ category, amount, typeBalance, color, date });
+  // app.post('/api/category', async (req, res) => {
+  //   const date = new Date();
+  //   const { category, color, typeBalance } = req.body.data;
+  //   const amount = 0;
+  //   const newCategory = new Category ({ category, amount, typeBalance, color, date });
 
-    const data = await newCategory.save();
-    res.status(201).send(data)
-  });
+  //   const data = await newCategory.save();
+  //   res.status(201).send(data)
+  // });
 
-  app.get('/api/income', async (req, res) => {
-    Income.find()
-      .then(description => res.json(description));
-  });
+  // app.get('/api/income', async (req, res) => {
+  //   Income.find()
+  //     .then(description => res.json(description));
+  // });
 
   // app.get('/api/expense', async (req, res) => {
   //   Expense.find()
   //     .then(expense => res.json(expense));
   // });
 
-  app.get('/api/category', async (req, res) => {
-    Category.find()
-      .then(category => res.json(category));
-  });
+  // app.get('/api/category', async (req, res) => {
+  //   Category.find()
+  //     .then(category => res.json(category));
+  // });
 
-  app.delete('/api/income/:id', (req, res) => {
-    Income.findByIdAndDelete(req.params.id)
-      .then(() => res.json())
-  });
+  // app.delete('/api/income/:id', (req, res) => {
+  //   Income.findByIdAndDelete(req.params.id)
+  //     .then(() => res.json())
+  // });
 
   // app.delete('/api/expense/:id', (req, res) => {
   //   Expense.findByIdAndDelete(req.params.id)
   //     .then(() => res.json())
   // });
 
-  app.delete('/api/category/:id', (req, res) => {
-    Category.findByIdAndDelete(req.params.id)
-      .then(() => res.json())
-  });
+  // app.delete('/api/category/:id', (req, res) => {
+  //   Category.findByIdAndDelete(req.params.id)
+  //     .then(() => res.json())
+  // });
 };

@@ -9,4 +9,4 @@ const categorySchema = new Schema({
   date: Date,
 });
 
-mongoose.model('category', categorySchema);
+mongoose.model('categories', categorySchema);
