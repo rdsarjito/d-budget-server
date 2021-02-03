@@ -25,7 +25,6 @@ app.use('/expense', expenseRoutes);
 app.use('/category', categoryRouters);
 
 require('./routes/authRoutes')(app);
-// require('./routes/balanceRoutes')(app);
 
 const PORT = 5000;
 
