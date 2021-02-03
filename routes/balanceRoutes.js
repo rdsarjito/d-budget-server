@@ -4,7 +4,6 @@ const Expense = mongoose.model('expenses');
 const Category = mongoose.model('category');
 
 module.exports = app => {
-
   // app.post('/api/income', async (req, res) => {
   //   const { description, amount, category } = req.body.data;
   //   const date = new Date();
@@ -55,10 +54,10 @@ module.exports = app => {
       .then(() => res.json())
   });
 
-  app.delete('/api/expense/:id', (req, res) => {
-    Expense.findByIdAndDelete(req.params.id)
-      .then(() => res.json())
-  });
+  // app.delete('/api/expense/:id', (req, res) => {
+  //   Expense.findByIdAndDelete(req.params.id)
+  //     .then(() => res.json())
+  // });
 
   app.delete('/api/category/:id', (req, res) => {
     Category.findByIdAndDelete(req.params.id)

@@ -1,13 +1,13 @@
 const mongoose = require('mongoose');
 const Expense = mongoose.model('expenses');
 
-const createExpense = (req, res) => {
+const createExpense = async(req, res) => {
   const { description, amount, category } = req.body.data;
   const date = new Date();
   const typeBalance = 'expense';
   const newExpense = new Expense ({ description, amount, category, typeBalance, date, typeBalance });
 
-  const expense = newExpense.save();
+  const expense = await newExpense.save();
   
   try {
     res.status(201).send(expense);
@@ -27,8 +27,8 @@ const deleteExpense = async(req, res) => {
   res.send(expense);
 };
 
-
 module.exports = {
   createExpense,
-  getExpense
+  getExpense,
+  deleteExpense
 };

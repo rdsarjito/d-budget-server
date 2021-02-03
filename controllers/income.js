@@ -1,13 +1,13 @@
 const mongoose = require('mongoose');
 const Income = mongoose.model('incomes');
 
-const createincome = (req, res) => {
+const createIncome = async(req, res) => {
   const { description, amount, category } = req.body.data;
   const date = new Date();
   const typeBalance = 'income';
   const newIncome = new Income ({ description, amount, category, date, typeBalance });
 
-  const data = newIncome.save();
+  const data = await newIncome.save();
 
   try {
     res.status(201).send(data);
@@ -16,6 +16,10 @@ const createincome = (req, res) => {
   };
 };
 
+const getIncome = async (req, res) => {
+  Income.find()
+    .then(description => res.json(description));
+
 module.exports = {
-  createincome
+  createIncome
 };
