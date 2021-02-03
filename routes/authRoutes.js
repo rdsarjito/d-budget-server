@@ -28,11 +28,13 @@ module.exports = app => {
     const existingUser = await User.findOne({ googleId: getData.data.id });
     if(existingUser) {
       const accesToken = jwt.sign({existingUser}, process.env.ACCES_TOKEN_SECRET);
-      res.json({ accesToken });
+      return res.json({ accesToken });
     };
-    const newUser = await new User({ googleId: getData.data.id, picture: getData.data.picture, nane: getData.data.name });
 
-    const data = newUser.save();
-    res.send(data)
+    const newUser = await new User({ googleId: getData.data.id, picture: getData.data.picture, name: getData.data.name });
+    newUser.save();
+
+    const accesToken = jwt.sign({newUser}, process.env.ACCES_TOKEN_SECRET);
+    return res.json({ accesToken });
   });
 };

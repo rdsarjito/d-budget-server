@@ -5,25 +5,25 @@ const Category = mongoose.model('category');
 
 module.exports = app => {
 
-  app.post('/api/income', async (req, res) => {
-    const { description, amount, category } = req.body.data;
-    const date = new Date();
-    const typeBalance = 'income';
-    const newIncome = new Income ({ description, amount, category, date, typeBalance });
+  // app.post('/api/income', async (req, res) => {
+  //   const { description, amount, category } = req.body.data;
+  //   const date = new Date();
+  //   const typeBalance = 'income';
+  //   const newIncome = new Income ({ description, amount, category, date, typeBalance });
 
-    const data = await newIncome.save();
-    res.status(201).send(data);
-  });
+  //   const data = await newIncome.save();
+  //   res.status(201).send(data);
+  // });
 
-  app.post('/api/expense', async (req, res) => {
-    const { description, amount, category } = req.body.data;
-    const date = new Date();
-    const typeBalance = 'expense';
-    const newExpense = new Expense ({ description, amount, category, typeBalance, date, typeBalance });
+  // app.post('/api/expense', async (req, res) => {
+  //   const { description, amount, category } = req.body.data;
+  //   const date = new Date();
+  //   const typeBalance = 'expense';
+  //   const newExpense = new Expense ({ description, amount, category, typeBalance, date, typeBalance });
 
-    const data = await newExpense.save();
-    res.status(201).send(data)
-  });
+  //   const data = await newExpense.save();
+  //   res.status(201).send(data)
+  // });
 
   app.post('/api/category', async (req, res) => {
     const date = new Date();
@@ -40,10 +40,10 @@ module.exports = app => {
       .then(description => res.json(description));
   });
 
-  app.get('/api/expense', async (req, res) => {
-    Expense.find()
-      .then(expense => res.json(expense));
-  });
+  // app.get('/api/expense', async (req, res) => {
+  //   Expense.find()
+  //     .then(expense => res.json(expense));
+  // });
 
   app.get('/api/category', async (req, res) => {
     Category.find()

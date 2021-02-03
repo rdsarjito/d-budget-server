@@ -3,19 +3,24 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const keys = require('./config/keys');
+
+mongoose.connect(keys.mongoURI);
+
 require('./models/Income');
 require('./models/Expense');
 require('./models/Category');
 require('./models/User');
 
-mongoose.connect(keys.mongoURI);
+const incomeRoutes = require('./routes/income');
+const expenseRoutes = require('./routes/expense');
 
 const app = express();
 
 app.use(bodyParser.json());
 app.use(cors());
 
-app.use('/images', express.static('images'));
+app.use('/income', incomeRoutes);
+app.use('/expense', expenseRoutes);
 
 require('./routes/authRoutes')(app);
 require('./routes/balanceRoutes')(app);
