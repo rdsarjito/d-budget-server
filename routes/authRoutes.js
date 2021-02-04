@@ -28,13 +28,22 @@ module.exports = app => {
     const existingUser = await User.findOne({ googleId: getData.data.id });
     if(existingUser) {
       const accesToken = jwt.sign({existingUser}, process.env.ACCES_TOKEN_SECRET);
-      return res.json({ accesToken });
+      return res.status(200).send({ accesToken });
     };
 
     const newUser = await new User({ googleId: getData.data.id, picture: getData.data.picture, name: getData.data.name });
     newUser.save();
 
     const accesToken = jwt.sign({newUser}, process.env.ACCES_TOKEN_SECRET);
-    return res.json({ accesToken });
+    return res.status(200).send({ accesToken });
+  });
+
+  app.get('/api/google-login', async (req, res) => {
+    const getData = req.headers.authorization.split(' ')[1];
+    const accesToken = JSON.parse(getData)[0].accesToken;
+    jwt.verify(accesToken, process.env.ACCES_TOKEN_SECRET, (err, user) => {
+      if(err) return res.sendStatus(403);
+      res.status(200).send(user)      
+    });
   });
 };
