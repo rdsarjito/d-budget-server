@@ -1,9 +1,10 @@
 const express = require('express');
-const authControllers = require('../controllers/user');
-
 const router = express.Router();
 
-router.post('/', authControllers.createUserGoogleLogin);
-router.get('/', authControllers.getUserGoogleLogin);
+const auth = require('../middlewares/auth.js');
+const { createUserGoogleLogin, getUserGoogleLogin } = require('../controllers/user');
+
+router.post('/', createUserGoogleLogin);
+router.get('/', auth, getUserGoogleLogin);
 
 module.exports = router;

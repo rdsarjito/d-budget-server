@@ -1,7 +1,7 @@
 const express = require('express');
-const expenseControllers = require('../controllers/expense');
-
 const router = express.Router();
+
+const expenseControllers = require('../controllers/expense');
 
 router.post('/', expenseControllers.createExpense);
 router.get('/', expenseControllers.getExpense);
