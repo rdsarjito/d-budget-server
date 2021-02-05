@@ -30,5 +30,5 @@ const deleteIncome = async(req, res) => {
 module.exports = {
   createIncome,
   getIncome,
-  deleteIncome
+  // deleteIncome
 };
