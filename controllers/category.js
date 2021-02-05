@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Category = require('../models/Category')
+const Category = mongoose.model('categories')
 
 const createCategory = async(req, res) => {
   const date = new Date();

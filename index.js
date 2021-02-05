@@ -11,6 +11,11 @@ mongoose.set('useUnifiedTopology', true);
 
 mongoose.connect(keys.mongoURI);
 
+require('./models/Income');
+require('./models/Expense');
+require('./models/Category');
+require('./models/User');
+
 const incomeRoutes = require('./routes/income');
 const expenseRoutes = require('./routes/expense');
 const categoryRouters = require('./routes/category');

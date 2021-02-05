@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Expense = require('../models/Expense');
+const Expense = mongoose.model('expenses');
 
 const createExpense = async(req, res) => {
   const { description, amount, category } = req.body.data;

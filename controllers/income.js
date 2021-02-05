@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Income = require('../models/Income');
+const Income = mongoose.model('incomes');
 
 const createIncome = async(req, res) => {
   const { description, amount, category } = req.body.data;
