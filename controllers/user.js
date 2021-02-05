@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 
 const keys = require('../config/keys');
-const User = mongoose.model('users');
+const User = require('../models/User');
 
 const createUserGoogleLogin = async(req, res) => {
   const { code } = req.body;
