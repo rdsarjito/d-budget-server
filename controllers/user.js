@@ -38,8 +38,7 @@ const createUserGoogleLogin = async(req, res) => {
 };
 
 const getUserGoogleLogin = async(req, res) => {
-  const getData = req.headers.authorization.split(' ')[1];
-  const accesToken = JSON.parse(getData)[0].accesToken;
+  const accesToken = req.headers.authorization.split(' ')[1];
   jwt.verify(accesToken, process.env.ACCES_TOKEN_SECRET, (err, user) => {
     if(err) return res.sendStatus(403);
     res.status(200).send(user)      
