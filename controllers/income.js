@@ -18,7 +18,8 @@ const createIncome = async(req, res) => {
 };
 
 const getIncome = async(req, res) => {
-  const income = await Income.find()
+  const userId = req.user.userData._id;
+  const income = await Income.find({ "userId": userId })
   res.send(income);
 };
 
