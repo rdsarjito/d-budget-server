@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const categorySchema = new Schema({
+  userId: String,
   category: String,
   amount: Number,
   typeBalance: String,
