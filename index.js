@@ -32,6 +32,7 @@ app.use('/category', categoryRouters);
 app.use('/user', userRoutes);
 
 const PORT = 5000;
+
 app.listen(PORT);
 
 console.log(`Server Running on Port: http://localhost:${PORT}`);
