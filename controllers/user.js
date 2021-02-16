@@ -6,7 +6,8 @@ const keys = require('../config/keys');
 const User = mongoose.model('users');
 
 const createUserGoogleLogin = async(req, res) => {
-  const { code } = req.body;
+  const { username } = req.body;
+  console.log(username)
 
   const oauth2Client = new google.auth.OAuth2(
     keys.googleClientID,
